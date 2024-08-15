@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/recoleta" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/welland" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Button</title>
+    <title>Plantify</title>
+</head>
+    <style>
+        .section {
+            padding: 50px;
+            text-align: center;
+        }
+        .section:first-of-type {
+            background: url('{{ url_for('static', filename='back3.jpeg') }}') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            color: #EDEDED;
+            height: 90vh; /* Full viewport height */
+            display: flex; /* Enable flexbox for child alignment */
+            align-items: center; /* Center vertically */
+            justify-content: flex-start; /* Align items to the left */
+        }
+
+        .section:first-of-type .box {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-left: 10px; /* Aligns the box to the left with some margin */
+            height: auto; /* Let the height adjust based on content */
+            display: flex;
+            flex-direction: column; /* Stack children vertically */
+            align-items: flex-start; /* Align children to the start of the box */
+            gap: 10px; /* Add gap between h1 and h3 */
+            border-radius: 0; /* Ensures sharp edges */
+        }
+        .section:first-of-type .box h1 {
+            font-family: 'Welland', sans-serif;
+            font-size: 80px;
+            margin: 0; /* Remove default margin */
+        }
+
+        .section:first-of-type .box h3 {
+            font-family: 'Welland', sans-serif;
+            margin: 0; /* Remove default margin */
+        }
+
+        .services {
+            display: flex;
+            justify-content: space-around;
+            background-color: #EDEDED;
+        }
+        .service {
+            width: 30%;
+            background-color: #EDEDED;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .service img {
+            width: 100%;
+            border-radius: 8px;
+            width: 150px;
+            height: 150px;
+        }
+        .contact-form {
+            background-color: #F0F0F0;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #A8A8A8;
+            border-radius: 4px;
+        }
+        .about-section {
+            display: flex;
+            height: 57vh; /* Full viewport height */
+            background-color: #FFFFFF;
+        }
+        .text-content {
+            flex: 1; /* Takes up 50% of the width */
+            display: flex;
+            align-items: center; /* Center the paragraph vertically */
+            justify-content: center; /* Center the paragraph horizontally */
+            padding: 20px;
+            box-sizing: border-box; /* Include padding in the element's total width and height */
+        }
+
+        .text-content p {
+            font-size: 1rem; /* Adjust font size as needed */
+            line-height: 1.6; /* Better readability */
+            text-align: justify; /* Optional: Justify text for a clean look */
+            margin: 0;
+        }
+        .image-content {
+            flex: 1; /* Takes up 50% of the width */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .image-content img {
+            width:100%; /* Ensure image covers the container */
+            height:100% ; /* Ensure image covers the container */
+            object-fit: cover; /* Cover the entire container without stretching */
+            border-radius: 0px; /* Optional: Adds rounded corners to the image */
+        }
+
+        .image-overlay {
+            position: absolute; /* Position the overlay absolutely within the container */
+            top: 10px; /* Adjust as needed */
+            left: 10px; /* Adjust as needed */
+            padding: 5px 15px; /* Adjust padding as needed */
+            border-radius: 8px; /* Optional: Adds rounded corners to the overlay */
+        }
+
+        .image-overlay h1 {
+            font-family: 'Welland', sans-serif;
+            font-size: 10rem; /* Adjust as needed */
+            color: #FFFFFF; /* White text color for contrast */
+            margin: 0;
+        }
+        footer {
+            background-color: #424242;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        /* Header styling */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navigation styling */
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Spacing between links */
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #555;
+            color: #fff;
+        }
+
+        nav a.active {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    width: 100%;
+    height: 10vh;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    width: 150px;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: #2f2f2f;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.check-box{
+    width: 10px;
+    height: 10px;
+    border-radius: 40px;
+    box-shadow: 0 0 12px -2px rgba(0,0,0,0);
+    position: absolute;
+    top: 0;
+    right: -40px;
+    opacity: 0;
+}
+
+.check-box svg{
+    width: 40px;
+    margin: 20px;
+}
+
+svg path{
+    stroke-width: 3;
+    stroke: #fff;
+    stroke-dasharray: 34;
+    stroke-dashoffset: 34;
+    stroke-linecap: round;
+}
+
+.active{
+    background: #588461;/////////
+    transition: 1s;
+}
+
+.active .check-box{
+    right: 0;
+    opacity: 1;
+    transition: 1s;
+}
+
+.active p{
+    margin-right: 100px;
+    transition: 1s;
+}
+
+.active svg path{
+    stroke-dashoffset: 0;
+    transition: 1s;
+    transition-delay: 1s;
+}
+
+
+    </style>
+<body>
+    
+    
+    <!-- The header-->
+    <header>
+        <nav>
+            <a href="#Home">Home</a>
+            <a href="#Services">Services</a>
+            <a href="#about-section">About</a>
+            <a href="#Contact-Us">Contact Us</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+            
+        </nav>
+    </header>
+
+    
+    
+    
+    <!-- Home-->
+    
+    <div class="section" id="Home">
+        <div class="box" style="color: #263a2a;">
+            <h1 style="font-family: 'Welland', sans-serif; font-size: 80px;">Plantify</h1>
+            <h3 style="font-family: Georgia, serif;">The Place for a Healthy Plants</h3>
+        </div>
+    </div>
+
+    
+    
+    
+    
+    <!-- servises-->
+    
+    <div class="section services" id="Services">
+        <h1 style="font-family: 'Welland', sans-serif; font-size: 80px;justify-content: center; ">Choose             Your Service</h1>
+        
+        <div class="service">
+            <img src="{{ url_for('static', filename='sick1.png') }}" alt="Plant Disease Diagnosis">
+            <h2 style="color:#263a2a;font-family: 'Welland', sans-serif;">Plant Disease Diagnosis</h2>
+            <p>Identify and treat plant diseases with ease.</p>
+        </div>
+        
+        <div class="service">
+            <img src="{{ url_for('static', filename='plant4.png') }}" alt="Choose Your Plant" hight="500px" width="500px">
+            <h2 style="color:#263a2a;font-family: 'Welland', sans-serif;">Choose Your Plant</h2>
+            <p>Find the perfect plant for your home or garden.</p>
+        </div>
+        
+        <div class="service">
+            <img src="{{ url_for('static', filename='tips4.png') }}" alt="Tips for a Good Plant">
+            <h2 style="color:#263a2a;font-family: 'Welland', sans-serif;">Tips for a Good Plant</h2>
+            <p>Learn how to care for your plants effectively.</p>
+        </div>
+        
+    </div>
+
+    
+    
+    
+    
+    
+    
+    
+    <!-- about section-->
+   <div class="about-section" id="about-section">
+       <div class="text-content">
+                <h3 style="color:#c6b5a7;font-family: 'recoleta', sans-serif;font-size: 30px;">
+                    Plantify is dedicated to helping you keep your plants healthy and thriving. Our                           platform provides tools and resources for diagnosing plant diseases, selecting the                       best plants for your needs, and offering expert tips for plant care.</h3>
+       </div>
+       <div class="image-content">
+            <div class="image-overlay">
+                <h1>About Us</h1>
+            </div>
+            <img src="{{ url_for('static', filename='about1.jpeg') }}" alt="About Plantify">
+       </div>
+    </div>
+
+
+
+    
+    
+    
+    
+    
+    <!-- Costomer Stories--> 
+    <div class="section" style="background-color: #c6b5a7;color:#ffffff;">
+        <h1 style="font-family: 'Welland', sans-serif;font-size: 40px; ">Customer Stories</h1>
+                <p>Plantify has transformed my garden!<br> I used to struggle with plant diseases,<br>                      but now I caneasily diagnose and treat them.<br> My plants have never looked                              healthier.<br> - Sarah J.</p>
+    </div>
+
+    
+    
+    
+    
+    
+    <!-- Contact us section -->
+    <div class="section contact-form" style="background-color: #FFFFFF;" id="Contact-Us">
+        <h1 style="font-family: 'Welland', sans-serif;font-size: 40px; ">Contact Us</h1>
+        <form>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="tel" name="phone" placeholder="Phone" required>
+            <textarea name="message" placeholder="Message" rows="5" required></textarea>
+ 
+            <div class="container">
+        <button id="btn">
+            <p id="btnText">Submit</p>
+            <div class="check-box">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                    <path fill="transparent" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                </svg>
+            </div>
+        </button>
+    </div>
+    <script type="text/javascript">
+        const btn = document.querySelector("#btn");
+        const btnText = document.querySelector("#btnText");
+
+        btn.onclick = () => {
+            btnText.innerHTML = "Thanks";
+            btn.classList.add("active");
+        };
+    </script>
+        </form>
+    </div>
+
+    
+   
+    
+    
+    <!-- The footer-->
+    <footer>
+        <p>Phone: +962-XXX-XXXXXXX | Location: Jordan</p>
+        <p>Follow us on:
+            <a href="#">Facebook</a> |
+            <a href="#">Twitter</a> |
+            <a href="#">Instagram</a>
+        </p>
+    </footer>
+    
+    
+    
+    
+</body>
+</html>
+
